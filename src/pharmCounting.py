@@ -115,6 +115,7 @@ class pharmRecord(object):
                 
             for key in self.records.keys():
                 elem = (key, len(self.records[key]['patients']), self.records[key]['costs'])
+#                elem = (key, len(self.records[key]['patients']), int(self.records[key]['costs'])) # to pass the online test, somehow the total prices have to be integers.
                 heap.push(self.hp, elem)
                 if self.k is not None: # only keep the top k drugs in the heap
                     if len(self.hp) > self.k:
@@ -140,7 +141,7 @@ class pharmRecord(object):
         
         while self.stack:
             elem = self.stack.pop() # Drug records are stored in reversed order in stack.
-            line = elem[0] + ',' + str(int(elem[1])) + ',' + str(int(elem[2])) + '\n'
+            line = elem[0] + ',' + str(elem[1]) + ',' + str(elem[2]) + '\n'
             self.output_f.write(line)
         
         if self.logging:
