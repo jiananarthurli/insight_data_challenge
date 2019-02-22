@@ -79,7 +79,7 @@ class pharmRecord(object):
                 continue
 
             try:
-                int(line_array[-1]) # check if the last element is a valid float. If not, skip this line.
+                float(line_array[-1]) # check if the last element is a valid float. If not, skip this line.
             except ValueError:
                 if self.logging:
                     self.log(status='WARNING', 
@@ -90,7 +90,7 @@ class pharmRecord(object):
 
             patient_name = ','.join(line_array[1:-2]) # patients' last and first name are joined using ','
             drug_name = line_array[-2] # assume the second last element is the drug name
-            drug_cost = int(line_array[-1]) # assume the last element is the drug cost. 
+            drug_cost = float(line_array[-1]) # assume the last element is the drug cost. 
 
             if drug_name not in self.records: # make a new entry for a drug if not in the dictionary
                 self.records[drug_name] = {'patients' : set(), 'costs' : 0}
@@ -140,7 +140,7 @@ class pharmRecord(object):
         
         while self.stack:
             elem = self.stack.pop() # Drug records are stored in reversed order in stack.
-            line = elem[0] + ',' + str(elem[1]) + ',' + str(elem[2]) + '\n'
+            line = elem[0] + ',' + str(int(elem[1])) + ',' + str(int(elem[2])) + '\n'
             self.output_f.write(line)
         
         if self.logging:
