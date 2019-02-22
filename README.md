@@ -1,15 +1,15 @@
 # Instructions
 
-The input data is stored in ./input/, and the output folder is ./output/ by default.
+The input data is stored in ```./input/```, and the output folder is ```./output/``` by default.
 
 The program can be called using 
 ```sh
 sh run.sh
 ```
-assuming the input file path is ./input/itcont.txt. 
+assuming the input file path is ```./input/itcont.txt```. 
 log.txt is generated when the output file is written. 
 
-The python script can also be called with:
+The python script can also be called using:
 ```sh
 python ./src/pharmCounting.py input_file_path output_file_path
 ```
@@ -18,7 +18,7 @@ If only **top-K** number of drug records are needed, the python script can be ca
 ```sh
 python ./src/pharmCounting.py input_file_path output_file_path K
 ```
-where the last parameter specify the number of records in the output. If ```K``` is missing, all drug records will be written.
+where the last parameter ```K``` specify the number of records in the output. If ```K``` is missing, all drug records will be written.
 
 # Program ditails
 
@@ -51,14 +51,19 @@ When an element is popped, it is first swapped with the element in the end of th
 ```siftup``` compares the element with its parent, and swap if necessary.
 ```siftDown``` compares the element with both children (existence checked first), and swap if necessary.
 
-sorting complexity is *nlog(n)*, where *n* is the number of drugs. If *K* is specified, the complexity would be *nlog(K)*.
+The sorting complexity is *nlog(n)* if ```K``` is not specified, where *n* is the number of drugs. If *K* is specified, the complexity would be *nlog(K)*.
 
 Logging is enabled by default. It can be turned off by passing a parameter when the script is called:
 ```sh
 python ./src/pharmCounting.py input_file_path output_file_path K 0
 ```
 ```0``` is the flag for logging.
-log.txt records the starting and finishing of file reading. Any anomaly in the file will also be logged, with a line number and system time.
+```log.txt``` records the starting and finishing of file reading. Any anomaly met in file reading will also be logged, with a line number and system time.
+The path for ```log.txt``` can be specified using
+```sh
+python ./src/pharmCounting.py input_file_path output_file_path K 1 log_file_path
+```
+where ```1``` enables logging.
 
 # Classes and functions
 
@@ -85,7 +90,7 @@ log.txt records the starting and finishing of file reading. Any anomaly in the f
 -	```parent``` member function that return the parent index of an element. Returns ```None``` if not existing.	
 -	```lChild``` member function that return the left child index of an element. Returns ```None``` if not existing.	
 -	```rChild``` member function that return the right child index of an element. Returns ```None``` if not existing.
--	```compare``` member function that compare two elements. Return ```True``` if the left element has smaller total_cost. If there is a tie, return ```True``` if the left drug_name has a higher position in ascending alphabetical order. 
+-	```compare``` member function that compare two elements. Return ```True``` if the left element has smaller ```total_cost```. If there is a tie, return ```True``` if the left drug_name has a higher position in ascending alphabetical order. 
 
 ```main```: main function to be called.
 
