@@ -1,0 +1,3 @@
+drug_name,num_prescriber,total_cost
+CHLORPROMAZINE,2,3000.0
+BENZTROPINE MESYLATE,1,1500.0
