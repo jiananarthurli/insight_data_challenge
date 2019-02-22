@@ -14,11 +14,11 @@ The python script can also be called with:
 python ./src/pharmCounting.py input_file_path output_file_path
 ```
 
-If only top-K number of drug records are needed, the python script can be called with
+If only **top-K** number of drug records are needed, the python script can be called with
 ```sh
 python ./src/pharmCounting.py input_file_path output_file_path K
 ```
-where the last parameter specify the number of records in the output. If K is missing, all drug records are written.
+where the last parameter specify the number of records in the output. If ```K``` is missing, all drug records will be written.
 
 # Program ditails
 
@@ -51,7 +51,7 @@ When an element is popped, it is first swapped with the element in the end of th
 ```siftup``` compares the element with its parent, and swap if necessary.
 ```siftDown``` compares the element with both children (existence checked first), and swap if necessary.
 
-sorting complexity is nlog(n), n is the number of drugs. If k is specified, the complexity would be nlog(k).
+sorting complexity is *nlog(n)*, where *n* is the number of drugs. If *K* is specified, the complexity would be *nlog(K)*.
 
 Logging is enabled by default. It can be turned off by passing a parameter when the script is called:
 ```sh
@@ -63,29 +63,29 @@ log.txt records the starting and finishing of file reading. Any anomaly in the f
 # Classes and functions
 
 ```pharmRecord```: record processing class.
-	```__init__``` member function that initializes the member variables.
-	```__enter__``` member function that initializes the file handlers.
-	```__exit__``` member function that recyles the file handlers.
-	```log``` internal logging member function.
-	```read_input``` member function that reads the file line by line and drug info is written into a record dictionary.
-	```sort``` member function that heap-sort the drug records and the result is stored in a stack.
-	```write_output``` member function that writes the sorted records in the designated format.
-	```records``` member variable that stores the drug info.
-	```hp``` member variable for the minimum heap array.
-	```stack``` member variable that stores the sorted drug records.
-	```k``` member variable that stores the heap size. ```None``` is not specified.
-	```logging``` member variable as logging flag.
+-	```__init__``` member function that initializes the member variables.
+-	```__enter__``` member function that initializes the file handlers.
+-	```__exit__``` member function that recyles the file handlers.
+-	```log``` internal logging member function.
+-	```read_input``` member function that reads the file line by line and drug info is written into a record dictionary.
+-	```sort``` member function that heap-sort the drug records and the result is stored in a stack.
+-	```write_output``` member function that writes the sorted records in the designated format.
+-	```records``` member variable that stores the drug info.
+-	```hp``` member variable for the minimum heap array.
+-	```stack``` member variable that stores the sorted drug records.
+-	```k``` member variable that stores the heap size. ```None``` is not specified.
+-	```logging``` member variable as logging flag.
 
 
 ```pharmHeap```: min heap maintaining class.
-	```push``` member function that push a record element into the min heap.
-	```pop``` member function that pop the element on top of the min heap.
-	```siftUp``` member function that sift up an element recursively.
-	```siftDown``` member function that sift down an element recursively.
-	```parent``` member function that return the parent index of an element. Returns ```None``` if not existing.	
-	```lChild``` member function that return the left child index of an element. Returns ```None``` if not existing.	
-	```rChild``` member function that return the right child index of an element. Returns ```None``` if not existing.
-	```compare``` member function that compare two elements. Return ```True``` if the left element has smaller total_cost. If there is a tie, return ```True``` if the left drug_name has a higher position in ascending alphabetical order. 
+-	```push``` member function that push a record element into the min heap.
+-	```pop``` member function that pop the element on top of the min heap.
+-	```siftUp``` member function that sift up an element recursively.
+-	```siftDown``` member function that sift down an element recursively.
+-	```parent``` member function that return the parent index of an element. Returns ```None``` if not existing.	
+-	```lChild``` member function that return the left child index of an element. Returns ```None``` if not existing.	
+-	```rChild``` member function that return the right child index of an element. Returns ```None``` if not existing.
+-	```compare``` member function that compare two elements. Return ```True``` if the left element has smaller total_cost. If there is a tie, return ```True``` if the left drug_name has a higher position in ascending alphabetical order. 
 
 ```main```: main function to be called.
 
