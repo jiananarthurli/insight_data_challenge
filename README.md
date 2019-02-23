@@ -120,3 +120,8 @@ Smith,David,BENZTROPINE MESYLATE,1500
 ```
 
 The program passed all five test cases including the one provided by Insight.
+
+# Exception Handling
+
+Common exceptions such as "input file does not exist" or “missing input parameters” are handled. Exceptions happening during input file parsing are logged in ```log.txt```, with time, error type, input file line number and line contents.
+
