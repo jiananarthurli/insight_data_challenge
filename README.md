@@ -106,7 +106,7 @@ Four test cases are used other than the one provided by Insight.
 ```
 Smith,David,BENZTROPINE MESYLATE,1500
 ```
-- The third case is to handling commas in patients' name:
+- The third case is to test handling commas in patients' name:
 ```
 1000000004,"Rodriguez, Jr.",Maria,CHLORPROMAZINE,2000
 ```
