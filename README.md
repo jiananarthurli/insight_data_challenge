@@ -8,7 +8,7 @@ The program can be called using
 ```sh
 sh run.sh
 ```
-assuming the input file path is ```./input/itcont.txt```. ```log.txt``` is generated in the current directory.
+assuming the input file path is ```./input/itcont.txt```. Log file ```log.txt``` is generated in the current directory.
 
 The python script can also be called using:
 ```sh
