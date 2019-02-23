@@ -40,7 +40,7 @@ records = {
 After file reading is finished, an array element is generated as
 ```(drug_name, number_of_distinct_patients, total_cost)```
 for each durg record.
-The elements are pushed into a minimum heap, where the parent has smaller total_cost than both children. If there is a tie, the element whose drug_name has higher position in ascending alphabetical order will be on the top. If only top K drugs need to be in the output, the heap size is checked whenever a new element is pushed. If max heap size is reached, the record with minimum total_cost will be popped.
+The elements are pushed into a minimum heap, where the parent has smaller ```total_cost``` than both children. If there is a tie, the element whose ```drug_name``` has higher position in ascending alphabetical order will be on the top. If only top ```K``` drugs need to be in the output, the heap size is checked whenever a new element is pushed. If max heap size is reached, the record with minimum ```total_cost``` will be popped.
 
 Once all the drug records are pushed in th heap, all the min-heap elements are popped into a stack, in ascending order. 
 
@@ -51,7 +51,7 @@ When an element is popped, it is first swapped with the element in the end of th
 ```siftup``` compares the element with its parent, and swap if necessary.
 ```siftDown``` compares the element with both children (existence checked first), and swap if necessary.
 
-The sorting complexity is *nlog(n)* if ```K``` is not specified, where *n* is the number of drugs. If *K* is specified, the complexity would be *nlog(K)*.
+The sorting complexity is **nlog(n)** if ```K``` is not specified, where *n* is the number of drugs. If ```K``` is specified, the complexity would be **nlog(K)**.
 
 Logging is enabled by default. It can be turned off by passing a parameter when the script is called:
 ```sh
