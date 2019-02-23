@@ -52,7 +52,7 @@ When an element is popped, it is first swapped with the element in the end of th
 ```siftDown``` compares the element with both children (existence checked first), and swap if necessary.
 
 The image below demonstrates sift up and sift down. The label is ```drug_name,unique_patients,total_cost``` order. In both cases there is a tie in ```total_cost```, and the order is determined by ```drug_name```.
-![Image of sift up and sift down](./Heap)
+![Image of sift up and sift down](./Heap.png)
 
 The sorting complexity is **nlog(n)** if ```K``` is not specified, where *n* is the number of drugs. If ```K``` is specified, the complexity would be **nlog(K)**.
 
