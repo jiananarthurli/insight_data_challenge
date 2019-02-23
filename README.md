@@ -1,5 +1,7 @@
 # Instructions
 
+The program works for both Python 2 and Python 3.
+
 The input data is stored in ```./input/```, and the output folder is ```./output/``` by default.
 
 The program can be called using 
@@ -92,7 +94,7 @@ where ```1``` enables logging.
 -    ```rChild``` member function that return the right child index of an element. Returns ```None``` if not existing.
 -    ```compare``` member function that compare two elements. Return ```True``` if the left element has smaller ```total_cost```. If there is a tie, return ```True``` if the left drug_name has a higher position in ascending alphabetical order. 
 
-```main```: main function to be called.
+```main```: main function to be called. The record handling class ```pharmRecord``` is called using ```with``` so that file handlers won't be lost in case of exceptions.
 
 # Testings
 
