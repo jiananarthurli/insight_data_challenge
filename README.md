@@ -34,15 +34,15 @@ records = {
 }
 ```
 ```drug_name``` is a unique key for each type of drug. Inside each record,
-'patient_name' is a set of unique patient names;
-'total_cost' is the total cost of the drug.
+```patient_name``` is a set of unique patient names; the last and first names are concatenated into ```last_name,first_name``` as unique keys.
+```total_cost``` is the total cost of the drug.
 
 After file reading is finished, an array element is generated as
 ```(drug_name, number_of_distinct_patients, total_cost)```
 for each durg record.
-The elements are pushed into a minimum heap, where the parent has smaller ```total_cost``` than both children. If there is a tie, the element whose ```drug_name``` has higher position in ascending alphabetical order will be on the top. If only top ```K``` drugs need to be in the output, the heap size is checked whenever a new element is pushed. If max heap size is reached, the record with minimum ```total_cost``` will be popped.
+The elements are pushed into a minimum heap, where the parent has smaller ```total_cost``` than both children. If there is a tie, the element whose ```drug_name``` has higher position in ascending alphabetical order will be on the top. If only top ```K``` drugs need to be in the output, the heap size is checked whenever a new element is pushed. If heap size exceeds ```K```, the record on the heap top will be popped.
 
-Once all the drug records are pushed in th heap, all the min-heap elements are popped into a stack, in ascending order. 
+Once all the drug records are pushed in the heap, all the min-heap elements are popped into a stack, in ascending order. 
 
 The minimum heap is maintained with a heap class.
 When a new element is pushed, it is appended to the end of the array, then ```siftUp``` function is called for the new element recursively so that the min-heap is maintained.
@@ -94,3 +94,16 @@ where ```1``` enables logging.
 
 ```main```: main function to be called.
 
+# Testings
+
+Four test cases are used other than the one provided by Insight. 
+The first case is to test missing drug cost handling:
+```1000000002,Garcia,Maria,AMBIEN,```.
+The second case is to test missing record id handling:
+```Smith,David,BENZTROPINE MESYLATE,1500```.
+The third case is to handling commas in patients' name:
+```1000000004,"Rodriguez, Jr.",Maria,CHLORPROMAZINE,2000```.
+The fourth case is to test handling patients with multiple drug purchase:
+```1000000006,Smith,James,AMBIEN,300```.
+
+The program passed all five test cases including the one provided by Insight.
