@@ -20,7 +20,7 @@ python ./src/pharmCounting.py input_file_path output_file_path K
 ```
 where the last parameter ```K``` specify the number of records in the output. If ```K``` is missing, all drug records will be written.
 
-# Program ditails
+# Program details
 
 The script reads all the lines in the input file into a record dictionary. The first line is omitted.
 
