@@ -1,6 +1,7 @@
 from datetime import datetime
 from time import time
 import sys
+import os
 
 class pharmRecord(object):
     
@@ -25,22 +26,30 @@ class pharmRecord(object):
         self.stack = []
     
 
-    # open and close the file handlers using __enter__ and __exit__
+    # create and recycle the file handlers using __enter__ and __exit__
     def __enter__(self):
-        self.input_f = open(self.input_path, 'r')
-        self.output_f = open(self.output_path, 'w')
+
         if self.logging:
             self.log_f = open(self.log_path, 'w')
+
+        self.input_f = open(self.input_path, 'r')
+        self.output_f = open(self.output_path, 'w')
+
         return self
     
     def __exit__(self, exc_type, exc_value, traceback):
+
+        if self.logging:
+            if not exc_type:
+                self.log(status='NORMAL', 
+                         message='Program finished successfully.')
+            else:
+                self.log(status='ERROR', 
+                         message='Program was terminated unexpectedly.')
+            self.log_f.close()
+
         self.input_f.close()
         self.output_f.close()
-        if self.logging:
-            self.log(status='NORMAL', 
-                     message='Program finished successfully.')
-            self.log_f.close()    
-    
     
     # logging function
     def log(self, status='', message='', line_num=None, line=''):
@@ -240,31 +249,30 @@ class pharmHeap:
     
     
 def main():
-    
-    try:
-        sys.argv[1]
-        input_path = sys.argv[1]
-    except IndexError:
-        print('Input path missing.')
-    
-    try:
-        sys.argv[2]
-        output_path = sys.argv[2]
-    except IndexError:
-        print('Output path missing')
+
+    # the program needs at least two parameters
+    if len(sys.argv) < 3:
+        print('Input and output paths are not specified.')
+        return
+
+    input_path = sys.argv[1]
+    output_path = sys.argv[2]
+
+    if not os.path.isfile(input_path):
+        print('Input file \'{}\' does not exist.'.format(input_path))
+        return
         
     k = None # output all the drug records by default. if k is not None then top k records are in the output.
     logging = True # logging is enabled by default.
     log_path = 'log.txt' # default logging path.
     
-    # if the third parameter exists
+    # if parameter K exists
     try: 
-        int(sys.argv[3])
         k = int(sys.argv[3])
     except (IndexError, ValueError):
         pass
     
-    # if the fourth parameter exists
+    # if the logging flag parameter exists
     try: 
         sys.argv[4]
         if sys.argv[4] == '1':
@@ -272,11 +280,11 @@ def main():
         elif sys.argv[4] == '0':
             k = False
         else:
-            print('Logging flag should be 0 or 1')
+            print('Logging flag should be 0 or 1. Program continues with logging.')
     except (IndexError, ValueError):
         pass
     
-    # if the fifth parameter exists
+    # if a customized log path is specified
     try:
         sys.argv[5]
         log_path = sys.argv[5]
