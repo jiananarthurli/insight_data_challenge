@@ -111,6 +111,7 @@ Smith,David,BENZTROPINE MESYLATE,1500
 ```
 - The fourth case is to test handling patients with multiple drug purchase:
 ```
+1000000001,Smith,James,AMBIEN,100
 1000000006,Smith,James,AMBIEN,300
 ```
 
