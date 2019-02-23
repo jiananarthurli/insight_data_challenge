@@ -97,13 +97,13 @@ where ```1``` enables logging.
 # Testings
 
 Four test cases are used other than the one provided by Insight. 
--The first case is to test missing drug cost handling:
+- The first case is to test missing drug cost handling:
 ```1000000002,Garcia,Maria,AMBIEN,```.
--The second case is to test missing record id handling:
+- The second case is to test missing record id handling:
 ```Smith,David,BENZTROPINE MESYLATE,1500```.
--The third case is to handling commas in patients' name:
+- The third case is to handling commas in patients' name:
 ```1000000004,"Rodriguez, Jr.",Maria,CHLORPROMAZINE,2000```.
--The fourth case is to test handling patients with multiple drug purchase:
+- The fourth case is to test handling patients with multiple drug purchase:
 ```1000000006,Smith,James,AMBIEN,300```.
 
 The program passed all five test cases including the one provided by Insight.
