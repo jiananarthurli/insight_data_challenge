@@ -42,11 +42,11 @@ After file reading is finished, an array element is generated as
 for each durg record.
 The elements are pushed into a minimum heap, where the parent has smaller total_cost than both children. If there is a tie, the element whose drug_name has higher position in ascending alphabetical order will be on the top. If only top K drugs need to be in the output, the heap size is checked whenever a new element is pushed. If max heap size is reached, the record with minimum total_cost will be popped.
 
-Once all the drug records are pushed in th heap, all the min heap elements are popped into a stack, in ascending order. 
+Once all the drug records are pushed in th heap, all the min-heap elements are popped into a stack, in ascending order. 
 
 The minimum heap is maintained with a heap class.
-When a new element is pushed, it is appended to the end of the array, then ```siftUp``` function is called for the new element recursively so that the min heap is maintained.
-When an element is popped, it is first swapped with the element in the end of the array and then popped from the array. Then ```siftDown``` function is called for the element at the beginning of the array resursively so that the min heap is maintained.
+When a new element is pushed, it is appended to the end of the array, then ```siftUp``` function is called for the new element recursively so that the min-heap is maintained.
+When an element is popped, it is first swapped with the element in the end of the array and then popped from the array. Then ```siftDown``` function is called for the element at the beginning of the array resursively so that the min-heap is maintained.
 
 ```siftup``` compares the element with its parent, and swap if necessary.
 ```siftDown``` compares the element with both children (existence checked first), and swap if necessary.
@@ -67,7 +67,7 @@ where ```1``` enables logging.
 
 # Classes and functions
 
-```pharmRecord```: record processing class.
+```pharmRecord``` record processing class.
 -	```__init__``` member function that initializes the member variables.
 -	```__enter__``` member function that initializes the file handlers.
 -	```__exit__``` member function that recyles the file handlers.
@@ -82,9 +82,9 @@ where ```1``` enables logging.
 -	```logging``` member variable as logging flag.
 
 
-```pharmHeap```: min heap maintaining class.
--	```push``` member function that push a record element into the min heap.
--	```pop``` member function that pop the element on top of the min heap.
+```pharmHeap``` min-heap maintaining class.
+-	```push``` member function that push a record element into the min-heap.
+-	```pop``` member function that pop the element on top of the min-heap.
 -	```siftUp``` member function that sift up an element recursively.
 -	```siftDown``` member function that sift down an element recursively.
 -	```parent``` member function that return the parent index of an element. Returns ```None``` if not existing.	
