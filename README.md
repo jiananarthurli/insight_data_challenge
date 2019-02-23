@@ -35,12 +35,11 @@ records = {
 }
 ```
 ```drug_name``` is a unique key for each type of drug. Inside each record,
-```patient_name``` is a set of unique patient names; the last and first names are concatenated into ```last_name,first_name``` as unique keys.
-```total_cost``` is the total cost of the drug.
+```patient_name``` is a set for unique patient names; the last and first names are concatenated into ```last_name,first_name``` as unique keys.
+```total_cost``` is the total cost of a certain drug.
 
 After file reading is finished, an array element is generated as
-```(drug_name, number_of_distinct_patients, total_cost)```
-for each durg record.
+```(drug_name, unique_patients, total_cost)``` for each durg record.
 The elements are pushed into a minimum heap, where the parent has smaller ```total_cost``` than both children. If there is a tie, the element whose ```drug_name``` has higher position in ascending alphabetical order will be on the top. If only top ```K``` drugs need to be in the output, the heap size is checked whenever a new element is pushed. If heap size exceeds ```K```, the record on the heap top will be popped.
 
 Once all the drug records are pushed in the heap, all the min-heap elements are popped into a stack, in ascending order. 
@@ -51,6 +50,10 @@ When an element is popped, it is first swapped with the element in the end of th
 
 ```siftup``` compares the element with its parent, and swap if necessary.
 ```siftDown``` compares the element with both children (existence checked first), and swap if necessary.
+
+The image below demonstrates sift up and sift down. The label is ```drug_name,unique_patients,total_cost``` order. In both cases there is a tie in ```total_cost```, and the order is determined by ```drug_name```.
+![Image of sift up and sift down]
+(./Heap)
 
 The sorting complexity is **nlog(n)** if ```K``` is not specified, where *n* is the number of drugs. If ```K``` is specified, the complexity would be **nlog(K)**.
 
