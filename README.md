@@ -1,5 +1,7 @@
 # Instructions
 
+This is for the insight data challenge.
+
 The program works for both Python 2 and Python 3.
 
 The input data is stored in ```./input/```, and the output folder is ```./output/``` by default.
